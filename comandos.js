@@ -17,3 +17,13 @@ db.productos.find({stock:{$gt: 20}})
 // 2. Encontrar los clientes que no han comprado aún ningún producto.
 
 db.clientes.find({compras: null})
+
+// ACTUALIZACION
+
+// 1.Aumentar en 10 unidades el stock del producto "Borojó deshidratado".
+
+db.productos.updateOne({nombre: "Borojó deshidratado"}, {$inc: {stock: 10}})
+
+// 2.Añadir el tag "bajo azúcar" a todos los productos de la categoría "Bebida".
+
+db.productos.updateMany({categoria: "Bebida"}, {$push:{tags: "bajo azúcar"}})
