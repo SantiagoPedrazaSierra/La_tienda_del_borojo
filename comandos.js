@@ -7,3 +7,13 @@ db.productos.insertOne({ "_id": 11, "nombre": "Chocolatina de borojó", "categor
 // 2.Insertar un nuevo cliente que se llama "Mario Mendoza", con correo "mario@email.com", sin compras, y preferencias "energético" y "natural".
 
 db.clientes.insertOne({ "_id": 11, "nombre": "Mario Mendoza", "email": "mario@email.com",  "preferencias": ["energético", "natural"] })
+
+// LECTURA
+
+// 1. Consultar todos los productos que tengan stock mayor a 20 unidades.
+
+db.productos.find({stock:{$gt: 20}})
+
+// 2. Encontrar los clientes que no han comprado aún ningún producto.
+
+db.clientes.find({compras: null})
