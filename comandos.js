@@ -40,4 +40,24 @@ db.clientes.deleteOne({email: "juan@email.com"})
 db.productos.deleteMany({stock:{$lt:5}})
 
 
+// CONSULTAS CON EXpRESIONES REGULARES
+
+// Buscar productos cuyo nombre empiece por "Boro".
+
+db.productos.find({nombre: /^Boro/})
+
+
+// 2.Encontrar productos cuyo nombre contenga la palabra "con" (como en “Concentrado de borojó”).
+
+db.productos.find({nombre: /con/})
+
+
+// 3.Encontrar clientes cuyo nombre tenga la letra "z" (insensible a mayúsculas/minúsculas).
+
+db.productos.find({nombre:  /z/i } )
+
+ 
+
+
+
 
