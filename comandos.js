@@ -42,7 +42,7 @@ db.productos.deleteMany({stock:{$lt:5}})
 
 // CONSULTAS CON EXpRESIONES REGULARES
 
-// Buscar productos cuyo nombre empiece por "Boro".
+// 1.Buscar productos cuyo nombre empiece por "Boro".
 
 db.productos.find({nombre: /^Boro/})
 
@@ -56,7 +56,21 @@ db.productos.find({nombre: /con/})
 
 db.productos.find({nombre:  /z/i } )
 
- 
+
+// OPERADORES DE AGREGACIONEN CONSULTAS SOBRE ARRAYS
+
+// 1.Buscar clientes que tengan "natural" en sus preferencias.
+
+db.clientes.find({preferencias: "natural"})
+
+// 2.Encontrar productos que tengan al menos los tags "natural" y "orgánico" (usa $all).
+
+db.productos.find({ tags: { $all: ["natural", "orgánico"] } })
+
+// 3.Listar productos que tienen más de un tag ($size).
+
+db.productos.find({$expr: {$gt: [{$size: "$tags"},2]}})
+
 
 
 
